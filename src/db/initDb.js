@@ -65,6 +65,17 @@ const main = async () => {
       ('38', 'Atlanta', 'B', 0, 0, 0, 0, 0, 0, 0, 0);
     
     `);
+    await connection.query(`
+    CREATE TABLE Partidos (
+      Id VARCHAR(3) UNIQUE PRIMARY KEY,
+      Local VARCHAR(255),
+      Visitante VARCHAR(255),
+      GolL INT,
+      GolV INT,
+      ZonaL CHAR(1),
+      ZonaV CHAR(1)
+      );
+    `);
     console.log("tablas creadas");
   } catch (err) {
     console.error(err);
