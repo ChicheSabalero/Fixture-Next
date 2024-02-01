@@ -1,11 +1,11 @@
 // import Image from "next/image";
-// import styles from "./page.module.css";
+import styles from "../page.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
   return (
     <main>
-      <div className="container vh-100 align-content-center">
+      <div className={`container-fluid ${styles.centerContainer}`}>
         <table className="table">
           {/* <caption>Tabla de Partidos</caption> */}
           <thead>
@@ -21,7 +21,7 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            <tr class="table-secondary">
+            <tr class="table-Primary">
               <th scope="row">1</th>
               <td>1</td>
               <td>A</td>

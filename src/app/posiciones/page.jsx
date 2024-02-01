@@ -23,7 +23,7 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            <tr class="table-secondary">
+            <tr class="table-Primary">
               <th scope="row">1</th>
               <td>Equipo1</td>
               <td>A</td>
