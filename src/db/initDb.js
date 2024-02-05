@@ -1,33 +1,33 @@
-require("dotenv").config();
-const equiposdb = require("./tablas/equipos.sql");
+require('dotenv').config()
+const equiposdb = require('./tablas/equipos.sql')
 
-const getDb = require("./getDb");
-const mysql = require("mysql2");
-const { promisify } = require("util");
-const fs = require("fs").promises;
-const readFileAsync = promisify(fs.readFile);
+const getDb = require('./getDb')
+const mysql = require('mysql2')
+const { promisify } = require('util')
+const fs = require('fs').promises
+const readFileAsync = promisify(fs.readFile)
 
 const main = async () => {
-  let connection;
+  let connection
 
   try {
-    connection = await getDb();
+    connection = await getDb()
 
-    const equipos = "src/db/tablas/equipos.sql";
-    console.log("leyendo archivo");
-    const sqlFileContent = await readFileAsync(equipos, "utf-8");
+    const equipos = 'src/db/tablas/equipos.sql'
+    console.log('leyendo archivo')
+    const sqlFileContent = await readFileAsync(equipos, 'utf-8')
 
-    await connection.query(sqlFileContent);
-    console.log("tablas creadas");
+    await connection.query(sqlFileContent)
+    console.log('tablas creadas')
   } catch (err) {
-    console.error(err);
+    console.error(err)
   } finally {
-    if (connection) connection.end();
-    console.log("Servidor Corriendo");
-    process.exit();
+    if (connection) connection.end()
+    console.log('Servidor Corriendo')
+    process.exit()
   }
-};
-main();
+}
+main()
 // await connection.query(`USE Fixture`);
 // await connection.query(`
 
