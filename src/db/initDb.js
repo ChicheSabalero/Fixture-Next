@@ -1,33 +1,63 @@
-require('dotenv').config()
-const equiposdb = require('./tablas/equipos.sql')
-
-const getDb = require('./getDb')
-const mysql = require('mysql2')
-const { promisify } = require('util')
-const fs = require('fs').promises
-const readFileAsync = promisify(fs.readFile)
+require("dotenv").config();
+const { execSync } = require("child_process");
+const path = require("path");
 
 const main = async () => {
-  let connection
+	try {
+		const MYSQL_FILE = path.join(__dirname, "tablas", "partidos.sql");
+		// esto deberías traerlo de una variable de entorno
+		const MYSQL_NAME = process.env.MYSQL_NAME;
+		const MYSQL_USER = process.env.MYSQL_USER;
+		const MYSQL_PASSWORD = process.env.MYSQL_PASSWORD;
+		// const MYSQL_FILE = "./tablas/partidos.sql";
 
-  try {
-    connection = await getDb()
+		// con Docker
+		// const cmd = `cat ${FILE_SQL} | docker exec -i mysql-local /usr/bin/mysql -u ${DB_USER} --password=${DB_PASS} ${DB_NAME}`
 
-    const equipos = 'src/db/tablas/equipos.sql'
-    console.log('leyendo archivo')
-    const sqlFileContent = await readFileAsync(equipos, 'utf-8')
+		// sin Docker
+		const cmd = `cat ${MYSQL_FILE} | mysql -u ${MYSQL_USER} --password=${MYSQL_PASSWORD} ${MYSQL_NAME}`;
 
-    await connection.query(sqlFileContent)
-    console.log('tablas creadas')
-  } catch (err) {
-    console.error(err)
-  } finally {
-    if (connection) connection.end()
-    console.log('Servidor Corriendo')
-    process.exit()
-  }
-}
-main()
+		const output = execSync(cmd, { encoding: "utf-8" });
+		console.log(output);
+	} catch (err) {
+		console.error(err);
+	} finally {
+		process.exit();
+	}
+};
+
+main();
+
+// require('dotenv').config()
+// const equiposdb = require('./tablas/equipos.sql')
+
+// const getDb = require('./getDb')
+// const mysql = require('mysql2')
+// const { promisify } = require('util')
+// const fs = require('fs').promises
+// const readFileAsync = promisify(fs.readFile)
+
+// const main = async () => {
+//   let connection
+
+//   try {
+//     connection = await getDb()
+
+//     const equipos = 'src/db/tablas/equipos.sql'
+//     console.log('leyendo archivo')
+//     const sqlFileContent = await readFileAsync(equipos, 'utf-8')
+
+//     await connection.query(sqlFileContent)
+//     console.log('tablas creadas')
+//   } catch (err) {
+//     console.error(err)
+//   } finally {
+//     if (connection) connection.end()
+//     console.log('Servidor Corriendo')
+//     process.exit()
+//   }
+// }
+// main()
 // await connection.query(`USE Fixture`);
 // await connection.query(`
 
