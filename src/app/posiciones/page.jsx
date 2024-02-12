@@ -2,8 +2,8 @@
 // import styles from "./page.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function Home() {
-	return (
+export default function Home () {
+  return (
 		<main>
 			<div className="vh-100 container align-content-center">
 				<table className="table">
@@ -69,5 +69,5 @@ export default function Home() {
 				</div>
 			</div>
 		</main>
-	);
+  );
 }

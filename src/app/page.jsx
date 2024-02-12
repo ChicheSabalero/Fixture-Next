@@ -1,11 +1,11 @@
-import React from "react"
+import React from "react";
 
 const Index = () => {
   return (
     <div>
-      <h1>Hola, esta es mi nueva página</h1>
+      <h1>Fixture Primera Nacional 2024</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;
