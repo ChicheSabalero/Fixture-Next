@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
-import connectToDatabase from "../../../../db/getDb";
-
-export async function GET (request) {
+import connectDB from "../../../../db/getDb";
+export async function GET(request) {
   try {
-    const pool = connectToDatabase();
+    const pool = connectDB();
     console.log("pool");
-    const [partidos] = await pool.query("SELECT * FROM partidos;", []);
+    const [partidos] = await pool.query("SELECT * FROM equipos;", []);
     console.log(partidos);
     return NextResponse.json(partidos);
   } catch (error) {

@@ -1,38 +1,38 @@
 {
-  "name": "fixture",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "db": "nodemon ./db/initDb.js",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
-    "test": "jest",
-    "test:watch": "jest --watch"
-  },
-  "dependencies": {
-    "bootstrap": "^5.3.2",
-    "dotenv": "^16.4.1",
-    "mysql2": "^3.8.0",
-    "next": "14.1.0",
-    "nodemon": "^3.0.3",
-    "react": "^18",
-    "react-bootstrap": "^2.10.0",
-    "react-dom": "^18"
-  },
-  "devDependencies": {
-    "@testing-library/jest-dom": "^6.4.1",
-    "@testing-library/react": "^14.2.1",
-    "eslint": "^8.56.0",
-    "eslint-config-next": "^14.1.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.33.2",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0"
-  }
+	"name": "fixture",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"db": "nodemon ./db/initDb.js",
+		"lint": "next lint",
+		"lint:fix": "next lint --fix",
+		"test": "jest",
+		"test:watch": "jest --watch"
+	},
+	"dependencies": {
+		"bootstrap": "^5.3.2",
+		"dotenv": "^16.4.1",
+		"mysql2": "^3.8.0",
+		"next": "14.1.0",
+		"nodemon": "^3.0.3",
+		"react": "^18",
+		"react-bootstrap": "^2.10.0",
+		"react-dom": "^18"
+	},
+	"devDependencies": {
+		"@testing-library/jest-dom": "^6.4.1",
+		"@testing-library/react": "^14.2.1",
+		"eslint": "^8.56.0",
+		"eslint-config-next": "^14.1.0",
+		"eslint-config-standard": "^17.1.0",
+		"eslint-plugin-import": "^2.29.1",
+		"eslint-plugin-n": "^16.6.2",
+		"eslint-plugin-promise": "^6.1.1",
+		"eslint-plugin-react": "^7.33.2",
+		"jest": "^29.7.0",
+		"jest-environment-jsdom": "^29.7.0"
+	}
 }

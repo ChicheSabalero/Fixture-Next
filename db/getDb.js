@@ -1,27 +1,25 @@
-const mysql = require("mysql2/promise");
-const dotenv = require("dotenv");
-
+import mysql from "mysql2/promise";
+import dotenv from "dotenv";
 dotenv.config();
-
-async function connectToDatabase() {
+let pool;
+const connectDB = () => {
   try {
-    const connection = await mysql.createConnection({
-      host: process.env.HOST || "localhost",
-      port: process.env.PORT || "3306",
-      user: process.env.MYSQL_USER,
-      password: process.env.MYSQL_PASSWORD,
-      database: process.env.MYSQL_NAME,
-      SECRET: process.env.SECRET,
-    });
+    if (!pool) {
+      pool = mysql.createPool({
+        host: process.env.HOST || "localhost",
+        user: process.env.MYSQL_USER,
+        password: process.env.MYSQL_PASSWORD,
+        database: process.env.MYSQL_NAME,
+        connectionLimit: 10,
+      });
 
-    await connection.query("USE Fixture");
-
-    console.log("Conexión a MySQL establecida correctamente");
-    return connection;
+      console.log("Conexión a MySQL establecida correctamente");
+    }
+    return pool;
   } catch (error) {
     console.error("Error al conectar a MySQL:", error);
     throw error;
   }
-}
+};
 
-module.exports = connectToDatabase;
+export default connectDB;
