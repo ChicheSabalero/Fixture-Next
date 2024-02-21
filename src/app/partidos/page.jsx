@@ -1,13 +1,14 @@
-// import Image from "next/image";
-import styles from "../page.module.css";
+"use Client";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import partidosData from "../api/utils/partidosData";
 
-export default function Home () {
+export default async function Home() {
+  const getData = await partidosData();
   return (
     <main>
-      <div className={`container-fluid ${styles.centerContainer}`}>
+      <div className="vh-100 container align-content-center">
         <table className="table">
-          {/* <caption>Tabla de Partidos</caption> */}
           <thead>
             <tr className="table-dark">
               <th scope="col">Id</th>
@@ -21,19 +22,24 @@ export default function Home () {
             </tr>
           </thead>
           <tbody>
-            <tr class="table-Primary">
-              <th scope="row">1</th>
-              <td>1</td>
-              <td>A</td>
-              <td>EquipoLocal1</td>
-              <td>2</td>
-              <td>1</td>
-              <td>EquipoVisitante1</td>
-              <td>B</td>
-            </tr>
+            {getData &&
+              getData.map((partido) => (
+                <tr key={partido.Id} className="table-Primary">
+                  <th scope="row">{partido.Id}</th>
+                  <td>{partido.Fecha}</td>
+                  <td>{partido.ZonaL}</td>
+                  <td>{partido.Local}</td>
+                  <td>{partido.GolL}</td>
+                  <td>{partido.GolV}</td>
+                  <td>{partido.Visitante}</td>
+                  <td>{partido.ZonaV}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
     </main>
   );
 }
+
+Home.useClient = true;

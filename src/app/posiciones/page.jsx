@@ -1,13 +1,10 @@
 "use Client";
-/* eslint-disable no-tabs */
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import equiposData from "../api/utils/equiposData";
 
-// Mueve la lógica de fetch a un archivo separado
-import { fetchEquipos } from "../api/utils/serverData";
-
-// Define tu componente como una función normal
-export default function Home({ equipos }) {
+export default async function Home() {
+  const getData = await equiposData();
   return (
     <main>
       <div className="vh-100 container align-content-center">
@@ -28,8 +25,8 @@ export default function Home({ equipos }) {
             </tr>
           </thead>
           <tbody>
-            {equipos &&
-              equipos.map((equipo) => (
+            {getData &&
+              getData.map((equipo) => (
                 <tr key={equipo.Id} className="table-primary">
                   <th scope="row">{equipo.Id}</th>
                   <td>{equipo.Equipo}</td>
