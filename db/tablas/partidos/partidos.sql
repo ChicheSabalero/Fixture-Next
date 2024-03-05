@@ -1156,7 +1156,7 @@ VALUES (
         19, 'A', 'San Miguel', 0, 0, 'Quilmes', 'A'
     ),
     (
-        9, 'A', 'Ferro', 0, 0, 'Talleres (RdE)', 'A'
+        19, 'A', 'Ferro', 0, 0, 'Talleres (RdE)', 'A'
     ),
     (
         19, 'A', 'Dep. Maipu', 0, 0, 'Estudiantes (BA)', 'A'

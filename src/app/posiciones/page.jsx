@@ -1,10 +1,15 @@
-"use Client";
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import equiposData from "../api/utils/equiposData";
+import GET from "../api/Posiciones/route";
+
+const getPosiciones = async () => {
+  const response = await fetch(`http://localhost:3000/api/Posiciones`);
+  const posiciones = await response.json();
+  console.log(posiciones);
+  return posiciones;
+};
 
 export default async function Home() {
-  const getData = await equiposData();
+  // METODO 1
+  const tablaPosiciones = await getPosiciones();
   return (
     <main>
       <div className="vh-100 container align-content-center">
@@ -25,8 +30,8 @@ export default async function Home() {
             </tr>
           </thead>
           <tbody>
-            {getData &&
-              getData.map((equipo) => (
+            {tablaPosiciones &&
+              tablaPosiciones.map((equipo) => (
                 <tr key={equipo.Id} className="table-primary">
                   <th scope="row">{equipo.Id}</th>
                   <td>{equipo.Equipo}</td>
